@@ -1,11 +1,10 @@
 (ns fizzbuzz.core)
 
 (defn fizzbuzz [n]
-  (cond
-    (and (= 0 (mod n 5)) (= 0 (mod n 3))) "FizzBuzz"
-    (= 0 (mod n 3))      "Fizz"
-    (= 0 (mod n 5))      "Buzz"
-    :else n))
+  (cond-> nil
+    (zero? (mod n 3)) (str "Fizz")
+    (zero? (mod n 5)) (str "Buzz")
+    :always (or (str n))))
 
 (defn main
   "I don't do a whole lot."
